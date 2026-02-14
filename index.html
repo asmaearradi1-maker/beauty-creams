@@ -1,95 +1,232 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NaturaGlow - Beauté Naturelle</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<body>
+/* VARIABLES COULEURS */
+:root {
+    --primary: #1f7a5c;
+    --secondary: #dff5e8;
+    --accent: #f4a261;
+    --dark: #1b4332;
+    --light: #f8fffb;
+}
 
-<header>
-    <div class="logo">
-        <h1>NaturaGlow 🌿</h1>
-    </div>
+/* BODY */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: var(--light);
+    color: #333;
+    line-height: 1.6;
+}
 
-    <nav>
-        <a href="#accueil">Accueil</a>
-        <a href="#produits">Produits</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
-    </nav>
-</header>
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: linear-gradient(90deg, var(--primary), var(--dark));
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
 
-<!-- SECTION HERO -->
-<section id="accueil" class="hero">
-    <h2>La beauté 100% naturelle</h2>
-    <p>Des soins bio inspirés par la nature pour sublimer votre peau.</p>
-    <button onclick="showPromo()">Voir nos offres</button>
-</section>
+header h1 {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
 
-<!-- SECTION PRODUITS -->
-<section id="produits" class="produits">
-    <h2>Nos Produits</h2>
+nav a {
+    color: white;
+    margin-left: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
 
-    <div class="card">
-        <img src="images/creme.jpg" alt="Crème hydratante">
-        <h3>Crème Hydratante Naturelle</h3>
-        <p>Enrichie en aloe vera et beurre de karité pour une hydratation intense.</p>
-        <span class="prix">120 MAD</span>
-    </div>
+nav a:hover {
+    color: var(--accent);
+}
 
-    <div class="card">
-        <img src="images/serum.jpg" alt="Sérum argan">
-        <h3>Sérum à l’Huile d’Argan</h3>
-        <p>Huile d’argan pure du Maroc pour une peau éclatante.</p>
-        <span class="prix">180 MAD</span>
-    </div>
+/* HERO */
+.hero {
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--secondary), white);
+    text-align: center;
+    padding: 0 20px;
+}
 
-    <div class="card">
-        <img src="images/masque.jpg" alt="Masque naturel">
-        <h3>Masque Visage Naturel</h3>
-        <p>Masque purifiant aux extraits d’aloe vera et argile verte.</p>
-        <span class="prix">95 MAD</span>
-    </div>
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--dark);
+}
 
-    <div class="card">
-        <img src="images/huile.jpg" alt="Huile capillaire">
-        <h3>Huile Capillaire Bio</h3>
-        <p>Nourrit et renforce les cheveux naturellement.</p>
-        <span class="prix">150 MAD</span>
-    </div>
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+}
 
-</section>
+.hero button {
+    padding: 12px 30px;
+    background: var(--primary);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
 
-<!-- SECTION A PROPOS -->
-<section id="apropos" class="apropos">
-    <h2>À propos de NaturaGlow</h2>
-    <p>
-        NaturaGlow est une marque marocaine spécialisée dans les cosmétiques naturels.
-        Tous nos produits sont fabriqués à partir d’ingrédients bio,
-        sans produits chimiques ni tests sur les animaux.
-    </p>
-</section>
+.hero button:hover {
+    background: var(--accent);
+    transform: translateY(-3px);
+}
 
-<!-- SECTION CONTACT -->
-<section id="contact" class="contact">
-    <h2>Contactez-nous</h2>
+/* PRODUITS */
+.produits {
+    padding: 80px 8%;
+    background: white;
+    text-align: center;
+}
 
-    <form onsubmit="return envoyerMessage()">
-        <input type="text" placeholder="Votre nom" required>
-        <input type="email" placeholder="Votre email" required>
-        <textarea placeholder="Votre message" rows="4"></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
-</section>
+.produits h2 {
+    font-size: 2.2rem;
+    margin-bottom: 50px;
+    color: var(--dark);
+}
 
-<footer>
-    <p>© 2026 NaturaGlow | Beauté Naturelle 🌿</p>
-</footer>
+.card {
+    background: var(--secondary);
+    border-radius: 20px;
+    padding: 30px;
+    width: 260px;
+    margin: 20px;
+    display: inline-block;
+    transition: 0.4s ease;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 
-<script src="script.js"></script>
+.card h3 {
+    margin-bottom: 15px;
+    color: var(--primary);
+}
 
-</body>
-</html>
+.card p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.card .prix {
+    font-weight: bold;
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    background: white;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* A PROPOS */
+.apropos {
+    padding: 80px 10%;
+    background: linear-gradient(135deg, var(--secondary), white);
+    text-align: center;
+}
+
+.apropos h2 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: var(--dark);
+}
+
+.apropos p {
+    max-width: 700px;
+    margin: auto;
+    font-size: 1.1rem;
+}
+
+/* CONTACT */
+.contact {
+    padding: 80px 8%;
+    text-align: center;
+    background: white;
+}
+
+.contact h2 {
+    margin-bottom: 30px;
+    color: var(--dark);
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form input,
+form textarea {
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 8px rgba(31,122,92,0.2);
+}
+
+form button {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    background: var(--primary);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+form button:hover {
+    background: var(--accent);
+}
+
+/* FOOTER */
+footer {
+    background: var(--dark);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .card {
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    nav {
+        display: none;
+    }
+}
