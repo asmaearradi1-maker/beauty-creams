@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NaturaGlow - Beauté Naturelle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <h1>NaturaGlow 🌿</h1>
+    </div>
+
+    <nav>
+        <a href="#accueil">Accueil</a>
+        <a href="#produits">Produits</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- SECTION HERO -->
+<section id="accueil" class="hero">
+    <h2>La beauté 100% naturelle</h2>
+    <p>Des soins bio inspirés par la nature pour sublimer votre peau.</p>
+    <button onclick="showPromo()">Voir nos offres</button>
+</section>
+
+<!-- SECTION PRODUITS -->
+<section id="produits" class="produits">
+    <h2>Nos Produits</h2>
+
+    <div class="card">
+        <img src="images/creme.jpg" alt="Crème hydratante">
+        <h3>Crème Hydratante Naturelle</h3>
+        <p>Enrichie en aloe vera et beurre de karité pour une hydratation intense.</p>
+        <span class="prix">120 MAD</span>
+    </div>
+
+    <div class="card">
+        <img src="images/serum.jpg" alt="Sérum argan">
+        <h3>Sérum à l’Huile d’Argan</h3>
+        <p>Huile d’argan pure du Maroc pour une peau éclatante.</p>
+        <span class="prix">180 MAD</span>
+    </div>
+
+    <div class="card">
+        <img src="images/masque.jpg" alt="Masque naturel">
+        <h3>Masque Visage Naturel</h3>
+        <p>Masque purifiant aux extraits d’aloe vera et argile verte.</p>
+        <span class="prix">95 MAD</span>
+    </div>
+
+    <div class="card">
+        <img src="images/huile.jpg" alt="Huile capillaire">
+        <h3>Huile Capillaire Bio</h3>
+        <p>Nourrit et renforce les cheveux naturellement.</p>
+        <span class="prix">150 MAD</span>
+    </div>
+
+</section>
+
+<!-- SECTION A PROPOS -->
+<section id="apropos" class="apropos">
+    <h2>À propos de NaturaGlow</h2>
+    <p>
+        NaturaGlow est une marque marocaine spécialisée dans les cosmétiques naturels.
+        Tous nos produits sont fabriqués à partir d’ingrédients bio,
+        sans produits chimiques ni tests sur les animaux.
+    </p>
+</section>
+
+<!-- SECTION CONTACT -->
+<section id="contact" class="contact">
+    <h2>Contactez-nous</h2>
+
+    <form onsubmit="return envoyerMessage()">
+        <input type="text" placeholder="Votre nom" required>
+        <input type="email" placeholder="Votre email" required>
+        <textarea placeholder="Votre message" rows="4"></textarea>
+        <button type="submit">Envoyer</button>
+    </form>
+</section>
+
+<footer>
+    <p>© 2026 NaturaGlow | Beauté Naturelle 🌿</p>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
