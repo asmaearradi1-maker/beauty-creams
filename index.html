@@ -139,65 +139,14 @@ nav a:hover {
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
-/* A PROPOS */
-.apropos {
-    padding: 80px 10%;
-    background: linear-gradient(135deg, var(--secondary), white);
-    text-align: center;
+.loading {
+    font-size: 1.2rem;
+    color: var(--primary);
 }
 
-/* CONTACT */
-.contact {
-    padding: 80px 8%;
-    text-align: center;
-}
-
-form {
-    max-width: 400px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-}
-
-form input,
-form textarea {
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-}
-
-form button {
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    background: var(--primary);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-form button:hover {
-    background: var(--accent);
-}
-
-/* FOOTER */
-footer {
-    background: var(--dark);
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .hero h2 {
-        font-size: 2rem;
-    }
-    .cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
+.error {
+    color: red;
+    font-weight: bold;
 }
 
 </style>
@@ -210,8 +159,6 @@ footer {
     <nav>
         <a href="#accueil">Accueil</a>
         <a href="#produits">Produits</a>
-        <a href="#apropos">À propos</a>
-        <a href="#contact">Contact</a>
     </nav>
 </header>
 
@@ -223,46 +170,9 @@ footer {
 
 <section id="produits" class="produits">
     <h2>Nos Produits</h2>
-    <div class="cards-container">
-        <div class="card">
-            <h3>Crème Hydratante</h3>
-            <p>Aloe vera & beurre de karité pour une hydratation intense.</p>
-            <span>120 MAD</span>
-        </div>
-
-        <div class="card">
-            <h3>Sérum Argan</h3>
-            <p>Huile d’argan pure du Maroc pour une peau éclatante.</p>
-            <span>180 MAD</span>
-        </div>
-
-        <div class="card">
-            <h3>Masque Naturel</h3>
-            <p>Argile verte & extraits végétaux purifiants.</p>
-            <span>95 MAD</span>
-        </div>
-
-        <div class="card">
-            <h3>Huile Capillaire</h3>
-            <p>Nourrit et renforce les cheveux naturellement.</p>
-            <span>150 MAD</span>
-        </div>
+    <div id="cards" class="cards-container">
+        <p class="loading">Chargement des produits...</p>
     </div>
-</section>
-
-<section id="apropos" class="apropos">
-    <h2>À propos de nous</h2>
-    <p>NaturaGlow est une marque marocaine spécialisée dans les cosmétiques naturels, sans produits chimiques et respectueux de l’environnement.</p>
-</section>
-
-<section id="contact" class="contact">
-    <h2>Contactez-nous</h2>
-    <form onsubmit="return envoyerMessage()">
-        <input type="text" placeholder="Votre nom" required>
-        <input type="email" placeholder="Votre email" required>
-        <textarea placeholder="Votre message"></textarea>
-        <button type="submit">Envoyer</button>
-    </form>
 </section>
 
 <footer>
@@ -270,14 +180,51 @@ footer {
 </footer>
 
 <script>
+
+const API_URL = "https://appbeautycreamsback-fzaqhdhpdpbpf0g7.francecentral-01.azurewebsites.net/api/rubriques";
+
+async function loadRubriques() {
+    const container = document.getElementById("cards");
+
+    try {
+        const response = await fetch(API_URL);
+
+        if (!response.ok) {
+            throw new Error("Erreur serveur");
+        }
+
+        const data = await response.json();
+
+        // Nettoyer le contenu
+        container.innerHTML = "";
+
+        // Générer les cartes dynamiquement
+        data.forEach(rubrique => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <h3>${rubrique.titre}</h3>
+                <p>Découvrez notre gamme ${rubrique.titre} 100% naturelle.</p>
+                <span>Voir les produits</span>
+            `;
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        container.innerHTML = `<p class="error">Impossible de charger les données.</p>`;
+        console.error(error);
+    }
+}
+
+// Charger au démarrage
+document.addEventListener("DOMContentLoaded", loadRubriques);
+
 function showPromo(){
     alert("🌿 Promotion : -20% sur tous les sérums cette semaine !");
 }
 
-function envoyerMessage(){
-    alert("Merci pour votre message ! Nous vous répondrons bientôt.");
-    return false;
-}
 </script>
 
 </body>
